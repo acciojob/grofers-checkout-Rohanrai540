@@ -1,20 +1,17 @@
-const button = document.querySelector("button");
-const ans = document.getElementById("ans");
-
-button.addEventListener("click", () => {
+document.querySelector("button").addEventListener("click", () => {
   const prices = document.querySelectorAll(".prices");
   let total = 0;
 
   prices.forEach(price => {
-    // Split by whitespace or new lines
-    const parts = price.innerText.trim().split(/\s+/);
+    const text = price.textContent;
+    const match = text.match(/(\d+)\s*$/); // LAST number only
 
-    // Take the last entered value
-    const value = Number(parts[parts.length - 1]);
-
-    total += value;
+    if (match) {
+      total += Number(match[1]);
+    }
   });
 
-  ans.innerText = total;
+  document.getElementById("ans").textContent = total;
 });
+
 
