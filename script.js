@@ -1,17 +1,16 @@
-document.querySelector("button").addEventListener("click", () => {
-  const prices = document.querySelectorAll(".prices");
-  let total = 0;
+// Select button
+const button = document.getElementById("calc");
 
-  prices.forEach(price => {
-    const text = price.textContent;
-    const match = text.match(/(\d+)\s*$/); // LAST number only
+// Add click event
+button.addEventListener("click", function () {
+    const prices = document.querySelectorAll(".prices");
+    let total = 0;
 
-    if (match) {
-      total += Number(match[1]);
-    }
-  });
+    // Calculate sum
+    prices.forEach(price => {
+        total += Number(price.innerText);
+    });
 
-  document.getElementById("ans").textContent = total;
+    // Display result
+    document.getElementById("ans").innerText = total;
 });
-
-
