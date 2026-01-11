@@ -1,15 +1,16 @@
-const button = document.getElementById("calc");
+const button = document.querySelector("button");
 
 button.addEventListener("click", function () {
     const prices = document.querySelectorAll(".prices");
     let total = 0;
 
     prices.forEach(price => {
-        // Extract the LAST number typed (important for Cypress)
-        const value = price.innerText.match(/\d+$/);
-        total += value ? Number(value[0]) : 0;
+        // Get all numbers and take the LAST one typed
+        const numbers = price.innerText.match(/\d+/g);
+        total += numbers ? Number(numbers[numbers.length - 1]) : 0;
     });
 
     document.getElementById("ans").innerText = total;
 });
+
 
